@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draw.io Diagram Generator"
+  short_description: "Generate and refine draw.io diagram files"
+  default_prompt: "Use $drawio-diagram-generator to create or revise a draw.io file that I can open directly in draw.io."
