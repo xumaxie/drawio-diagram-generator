@@ -5,6 +5,9 @@
 
 这套 skill 的主要工作流是：先分析需求、再生成图、最后复核和校验。
 
+GitHub 仓库：
+[xumaxie/drawio-diagram-generator](https://github.com/xumaxie/drawio-diagram-generator)
+
 ## 这个 skill 干什么
 
 它主要解决一类很常见但很容易做糙的事情：
@@ -14,6 +17,70 @@
 - 用户想根据代码结构、接口关系、系统流程、业务描述生成图
 
 skill 的默认目标不是聊天回复，而是产出一个本地 `.drawio` 文件。
+
+## 使用教程
+
+下面给出几种常用安装方式。  
+如果你只是本地自用，推荐直接复制目录。  
+如果你准备开源发布，推荐用 GitHub 安装命令。
+
+### 1. Codex 本地安装
+
+将 skill 目录复制到 Codex 的 skills 目录：
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R ./drawio-diagram-generator ~/.codex/skills/
+```
+
+如果你的仓库里 skill 不在根目录，而是在当前这种结构下，可以用：
+
+```bash
+mkdir -p ~/.codex/skills
+cp -R ./.codex/skills/drawio-diagram-generator ~/.codex/skills/
+```
+
+安装完成后，重启 Codex。
+
+### 2. Codex 通过 GitHub 安装
+
+如果你已经把它发布到 GitHub，可以在 Codex 里直接使用 `$skill-installer`：
+
+```text
+$skill-installer install https://github.com/xumaxie/drawio-diagram-generator/tree/main/.codex/skills/drawio-diagram-generator
+```
+
+如果你后面把这个 skill 单独放成仓库根目录，也可以直接安装对应目录 URL。
+
+安装完成后，重启 Codex。
+
+### 3. Claude Code / 兼容 Skills 协议的 Agent 安装
+
+对于 Claude Code、Cursor、OpenClaw 或其他支持 skills 协议的 Agent，推荐使用 `npx skills add`：
+
+```bash
+npx skills add https://github.com/xumaxie/drawio-diagram-generator --skill drawio-diagram-generator
+```
+
+如果你把这个 skill 单独作为一个技能仓库发布，也可以使用更短的形式：
+
+```bash
+npx skills add xumaxie/drawio-diagram-generator@drawio-diagram-generator -g -y
+```
+
+说明：
+
+- `--skill drawio-diagram-generator` 适合从一个多技能仓库中安装指定 skill
+- `-g` 表示全局安装
+- `-y` 表示跳过确认
+
+### 4. 安装后怎么用
+
+安装成功后，可以直接用自然语言触发，例如：
+
+- “帮我生成一个 H5 登录流程图，输出成 `.drawio` 文件。”
+- “根据这段系统说明画一张架构图，并保存成 draw.io 文件。”
+- “基于我现有的 draw.io XML 增加一个风控节点，不要整图重画。”
 
 ## 核心特点
 
